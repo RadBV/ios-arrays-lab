@@ -8,6 +8,14 @@ Create an array of strings called `colors` that contain "orange", "red", "yellow
 
 Then, using array subscripting and string interpolation, print out the String `"orange, yellow, and lavender are some of my favorite colors"`.
 
+```swift
+var colors = ["orange","red","yellow","turquoise","lavender"]
+var orange = colors[0]
+var yellow = colors[2]
+var lavender = colors[4]
+
+print("\(orange), \(yellow) and \(lavender) are some of my favorite colors")
+```
 
 ## Question 2
 
@@ -15,23 +23,55 @@ Remove "Illinois" and "Kansas" from the array below.
 
 `var westernStates = ["California", "Oregon", "Washington", "Idaho", "Illinois", "Kansas"]`
 
+`westernStates.removeLast(2)`
+
 
 ## Question 3
 
 Iterate through the array below. For each state, print out the name of the state, a colon, and whether it is or is not **in the continental United States.**
 
-`let moreStates = ["Hawaii", "New Mexico", "Alaska", "Montana", "Texas", "New York", "Florida"]`
+```swift
+let moreStates = ["Hawaii", "New Mexico", "Alaska", "Montana", "Texas", "New York", "Florida"]`
 
+var continental = ["New Mexico", "Alaska", "Montana", "Texas", "New York", "Florida"]
 
+for state in moreStates{
+    if continental.joined(separator: " ").contains(state){
+        print("\(state) IS a continental state")
+    } else {
+        print("\(state) is NOT a continental state")
+    }
+}
+```
 ## Question 4
 
 Print out how many non-whitespace characters are in `myString`:
 
-`let myString = "This is good practice with Strings!"`
+```swift
+let myString = "This is good practice with Strings!"
+var container = ""
+for i in myString{
+    if i != " "{
+        container += String(i)
+        }
+}
+print(container.count)
+```
 
 Iterate through the array below. For each sentence, print out how many non-whitespace characters are in it.
 
-`let myFavoriteQuotes = ["To be or not to be, that is the question.", "The only source of knowledge is experience.", "Mr. Gorbachev, tear down this wall!", "Four score and twenty years ago..."]`
+```swift
+let myFavoriteQuotes = ["To be or not to be, that is the question.", "The only source of knowledge is experience.", "Mr. Gorbachev, tear down this wall!", "Four score and twenty years ago..."]
+var container = ""
+
+for i in myFavoriteQuotes{
+    if i != " "{
+        container += String(i)
+        print(container.count)
+        }
+    container = ""
+}
+```
 
 
 ## Question 5
@@ -41,6 +81,19 @@ Iterate through `garden` and place any 🌷 that you find into the `basket`. Rep
 ```swift
 var garden = ["dirt","🌷","dirt","🌷","dirt","dirt","🌷","dirt","🌷","dirt"]
 var basket = [String]()
+
+for item in garden{
+    if item == "🌷"{
+        basket += [item]
+
+    }
+    garden[1] = "dirt"
+    garden[3] = "dirt"
+    garden[6] = "dirt"
+    garden[8] = "dirt"
+}
+print(basket.count)
+print(garden)
 ```
 
 ## Question 6
@@ -52,7 +105,15 @@ The below array represents an unfinished batting lineup for a baseball team. **Y
 - Change "Thomas" for "Guerrero"
 - Put "Reyes" to bat 8th instead.
 
-`var battingLineup = ["Reyes", "Jeter", "Ramirez", "Pujols","Griffey","Thomas","Jones", "Rodriguez"]`
+```swift
+var battingLineup = ["Reyes", "Jeter", "Ramirez", "Pujols","Griffey","Thomas","Jones", "Rodriguez"]
+
+battingLineup[1] = "Tejada"
+battingLineup[5] = "Guerrero"
+battingLineup.remove(at: 0)
+battingLineup.append("Reyes")
+battingLineup.append("Suzuki")
+```
 
 
 ## Question 7
@@ -74,7 +135,19 @@ Ex.1
 numbers = [4,2,6,73,32,4,2,1]
 
 target = 32
+var thirtyTwo = 0
 
+for i in numbers{
+    if i == target{
+        thirtyTwo += i
+    }
+}
+
+if thirtyTwo == target{
+    print(true)
+} else {
+    print(false)
+    
 //true
 ```
 
@@ -84,6 +157,18 @@ Ex. 2
 numbers = [32459,2,4,5,1,4,2,1]
 
 target = 3
+var thirtyTwo = 0
+
+for i in numbers{
+    if i == target{
+        thirtyTwo += i
+    }
+}
+
+if thirtyTwo == target{
+    print(true)
+} else {
+    print(false)
 
 //false
 ```
@@ -115,21 +200,49 @@ let arrayOfNumbers: [Int] = (1...100).map{ _ in Int.random(in: 0...200)}.map{Int
 
 Iterate through `secondListOfNumbers`, and print out all the odd numbers.
 
-`var secondListOfNumbers = [19,13,14,19,101,10000,141,404]`
+```swift
+var secondListOfNumbers = [19,13,14,19,101,10000,141,404]
+
+for i in secondListOfNumbers{
+    if i % 2 != 0{
+        print(i)
+        }
+}
+```
 
 
 ## Question 11
 
 Iterate through `thirdListOfNumbers`, and print out the sum.
 
-`var thirdListOfNumbers = [11, 26, 49, 61, 25, 40, 74, 3, 22, 23]`
+```swift
+var thirdListOfNumbers = [11, 26, 49, 61, 25, 40, 74, 3, 22, 23]
+var container = 0
+
+for i in thirdListOfNumbers{
+    container += i
+}
+print(container)
+```
+
+
 
 
 ## Question 12
 
 Iterate through `thirdListOfNumbers`, and print out the sum of all the even numbers.
 
-`var thirdListOfNumbers = [11, 26, 49, 61, 25, 40, 74, 3, 22, 23]`
+```swift
+var thirdListOfNumbers = [11, 26, 49, 61, 25, 40, 74, 3, 22, 23]
+var container = 0
+
+for i in thirdListOfNumbers{
+    if i % 2 == 0{
+        container += i
+    }
+}
+print(container)
+```
 
 
 ## Question 13
@@ -140,6 +253,13 @@ Append every Int that appears in both `listOne` and `listTwo` to the `sharedElem
 var listOne = [28, 64, 7, 96, 13, 32, 94, 11, 80, 68]
 var listTwo = [18, 94, 48, 6, 42, 68, 79, 76, 13, 7]
 var sharedElements = [Int]()
+
+var output = listOne.filter{listTwo.contains($0) }
+
+for i in output{
+    sharedElements.append(i)
+}
+print(sharedElements.count)
 ```
 
 
@@ -150,6 +270,9 @@ Write code such that `noDupeList` has all the same Ints as `dupeFriendlyList`, b
 ```swift
 var dupeFriendlyList = [4,2,6,2,2,6,4,9,2,1]
 var noDupeList: [Int] = []
+dupeFriendlyList = Array(Set(dupeFriendlyList))
+noDupeList = dupeFriendlyList
+print(noDupeList)
 ```
 
 ## Question 15
@@ -165,6 +288,16 @@ If we list all the natural numbers below 10 that are multiples of 3 or 5, we get
 
 Find the sum of all the multiples of 3 or 5 below 1000.
 
+```swift
+let thousand = 0..<1000
+var yummyContainer = 0
+
+for i in thousand{
+    if i % 3 == 0 || i % 5 == 0{
+        yummyContainer += i
+    }
+}
+```
 
 ## Question 17
 
@@ -172,6 +305,20 @@ Make an array that contains all elements that appear **more than twice** in `som
 
 ```swift
 var someRepeatsAgain = [25,11,30,31,50,28,4,37,13,20,24,38,28,14,44,33,7,43,39,35,36,42,1,40,7,14,23,46,21,39,11,42,12,38,41,48,20,23,29,24,50,41,38,23,11,30,50,13,13,16,10,8,3,43,10,20,28,39,24,36,21,13,40,25,37,39,31,4,46,20,38,2,7,11,11,41,45,9,49,31,38,23,41,16,49,29,14,6,6,11,5,39,13,17,43,1,1,15,25]
+
+var moreRepeats = [Int]()
+var counts: [Int: Int] = [:]
+
+for i in someRepeatsAgain{
+    counts[i] = (counts[i] ?? 0) + 1
+}
+
+for (key, value) in counts{
+    if value > 2{
+        moreRepeats.append(key)
+    }
+}
+print(moreRepeats)
 ```
 
 
@@ -190,6 +337,31 @@ input: `["apes", "abba", "apple"]`
 
 output: `"abba"`
 
+```swift
+var arr = ["apes", "abba", "apple"]
+var char = "a"
+var containString = ""
+var container = 0
+var mostA = ""
+
+
+for i in arr{
+    containString += String(i)
+        for j in containString{
+            if j == "a"{
+                let tik = containString.components(separatedBy: "a")
+                let tok = tik.count-1
+                if container < tok{
+                        container = tok
+                        mostA = i
+                }
+            }
+        }
+     containString = ""
+}
+print(mostA)
+```
+
 
 ## Question 20
 
@@ -199,6 +371,18 @@ Input: `[[2,4,1],[3,0],[9,3]]`
 
 Output: `[9,3]`
 
+```swift
+var arrOfArrOfInts = [[2,4,1],[3,0],[9,3]]
+var container = 0
+var greatestSumArray = [Int]()
+
+for i in arrOfArrOfInts{
+    if i.reduce(0, {$0 + $1}) > container{
+        greatestSumArray = i
+    }
+}
+print(greatestSumArray)
+```
 
 ## Question 21
 
@@ -207,6 +391,18 @@ Given an Array of Tuples of type `(Int, Int)`, create an array containing all th
 Input: `[(4,2), (-3,-3), (1,1), (3,9)]`
 
 Output: `[(-3,-3), (1,1)]`
+
+```swift
+var arrOfTups = [(4,2), (-3,-3), (1,1), (3,9)]
+var equals = [(Int, Int)]()
+
+for i in arrOfTups{
+    if i.0 == i.1 {
+        equals.append(i)
+    }
+}
+print(equals)
+```
 
 
 ## Question 22
@@ -217,6 +413,18 @@ Input: `[true, false, true, true]`
 
 Output: `false`
 
+```swift
+var tOrF = [true, false, true, true]
+var allAreTrue = true
+
+for i in tOrF{
+    if i != true{
+        allAreTrue = false
+    }
+}
+print(allAreTrue)
+```
+
 
 ## Question 23
 
@@ -226,6 +434,21 @@ Input: `[0..<3 , 2..<10, -4..<6, 13..<14]`
 
 Output: `[-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9,10,13]`
 
+```swift
+var numbersArray = [Int]()
+
+for i in rangesArray{
+    let intArr: [Int] = Array(i)
+    for j in intArr{
+        numbersArray.append(j)
+    } 
+}
+var allNumbersInOrder = numbersArray
+allNumbersInOrder = Array(Set(allNumbersInOrder))
+allNumbersInOrder = allNumbersInOrder.sorted()
+print(allNumbersInOrder)
+```
+
 
 ## Question 24
 
@@ -233,7 +456,7 @@ Given an array of Characters, create a String ignoring and uppercase Characters 
 
 Input: `let arr: [Character] = ["a", "p","P","l","E"," ","S","a","u","C,"e"]`
 
-Output: `"ApLeAuE"`
+Output: `"ApLAuE"`
 
 
 ## Question 25
